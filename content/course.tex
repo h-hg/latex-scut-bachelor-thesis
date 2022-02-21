@@ -1,0 +1,135 @@
+\chapter{使用教程}
+
+这里简单介绍一下模板的使用，语法部分可以对照相应的 tex 文件以及生成的 pdf 效果来进行参考。
+
+\section{文件说明}
+
+\begin{table}[htbp]
+    \centering
+    \zihao{5}
+    \caption{主要文件说明}
+    \label{tab:file-description}
+    \input{table/file-description}
+\end{table}
+
+\section{表}
+
+\LaTeX 的表格语法比较复杂，可以使用某些可视化工具，如 \href{https://www.tablesgenerator.com/}{Table Generator}，在线生成 \LaTeX 表格代码后，粘帖到 tex 文件。
+
+\autoref{tab:test} 是一个简单的表格示例。
+
+\begin{table}[htbp]
+    \centering
+    \zihao{5}
+    \caption{一个简单的表格}
+    \label{tab:test}
+    \input{table/test.tex}
+\end{table}
+
+\section{图}
+
+封面的 logo 图如 \autoref{fig:logo} 所示。
+
+\begin{figure}[htbp]
+    \centering
+    \caption{封面的 logo}
+    \label{fig:logo}
+    \includegraphics[width=0.4\textwidth]{img/logo.png}
+\end{figure}
+
+子图的排版使用的是 subfig 宏包，如 \autoref{fig:subfigure-a} 是 \autoref{fig:subfigure} 中的一个子图。
+
+\begin{figure}[htbp]
+    \centering
+    \subfloat[子图 a\label{fig:subfigure-a}]{
+        \includegraphics[width=0.2\textwidth]{img/logo.png}
+    }
+    \subfloat[子图 b\label{fig:subfigure-b}]{
+        \includegraphics[width=0.2\textwidth]{img/logo.png}
+    }
+    \subfloat[子图 c\label{fig:subfigure-c}]{
+        \includegraphics[width=0.2\textwidth]{img/logo.png}
+    }
+    \\
+    \subfloat[子图 d\label{fig:subfigure-d}]{
+        \includegraphics[width=0.2\textwidth]{img/logo.png}
+    }
+    \subfloat[子图 e\label{fig:subfigure-e}]{
+        \includegraphics[width=0.2\textwidth]{img/logo.png}
+    }
+    \subfloat[子图 f\label{fig:subfigure-f}]{
+        \includegraphics[width=0.2\textwidth]{img/logo.png}
+    }
+    \caption{多个图}
+    \label{fig:subfigure}
+\end{figure}
+\section{算法}
+
+\subsection{伪代码}
+
+伪代码部分，使用了 algorithm 和 algorithmic 两个宏包，伪代码的效果如 \autoref{algo:test} 所示。
+
+\begin{algorithm}[htbp]
+    \centering
+    \caption{伪代码示例}
+    \label{algo:test}
+    \input{algo/test}
+\end{algorithm}
+
+\subsection{代码}
+
+代码高亮部分使用了 minted 宏包，minted 主要有文件内和外部文件两种。
+文件内直接在 tex 写皆可，外部文件则是由 tex 引入外部代码文件。
+
+下面是一个文件内的 Python 代码：
+\begin{minted}[]{python}
+print('Hello World')
+\end{minted}
+
+如下为一段简单的 C++ 代码。
+\inputminted{c++}{code/test.cpp}
+
+\section{数学公式}
+
+行内公式：$a_n = a_{n-1} + 1$
+
+\autoref{eq:test} 是一个有编号公式。
+\begin{equation}
+    \label{eq:test}
+    a_n = a_{n-1} + 1
+\end{equation}
+
+无编号公式：
+$$
+    a_n = a_{n-1} + 1
+$$
+
+有时候，数学符号忘记怎么打了，可以在 \href{http://detexify.kirelabs.org/classify.html}{Detexify} 上面写符号，它会自动生成近似的 \LaTeX 符号代码。
+
+\section{数学环境}
+
+\section{化学式}
+
+\section{单位}
+
+这一个部分使用 siunitx 宏包，例如 \SI{1.5}{cm^3/min}、\SI{}{\degreeCelsius}。
+
+\section{引用}
+
+\subsection{论文}
+
+这部分使用了 biblatex 宏包。
+
+引用有两种，上标的\upcite{he2016deep}和非上标的\cite{he2016deep}。
+有时候需要多篇引用，例如 \cite{he2016deep, krizhevsky2012imagenet, vaswani2017attention}，
+根据场景决定是否采用上标形式 \upcite{he2016deep, krizhevsky2012imagenet, vaswani2017attention}。
+
+BibLaTex 信息可以通过此操作获得：在 \href{https://scholar.google.com}{Google Scholar} 上面搜索相应的论文，然后点击引用，再选择 BibLaTex 格式，在获得的文本\textbf{进行修改（根据论文要求的格式）}再粘帖到 ref.bib 文件中。
+
+\subsection{图、表等}
+
+这部分使用了 hyperref 宏包，
+
+\section{脚注}
+
+内容 \footnote{脚注内容}。

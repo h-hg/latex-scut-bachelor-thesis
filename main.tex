@@ -1,0 +1,45 @@
+\documentclass[
+  Title      = 你的论文标题,
+  Institute  = 你的学院,
+  Major      = 你的专业,
+  Name       = 你的名字,
+  StudentId  = 你的学号,
+  Supervisor = 你的指导老师,
+  SubmitDate = 提交日期,
+]{scutthesis}
+
+\usepackage{lipsum}
+
+\begin{document}
+
+\cover
+
+\prevstyle
+\input{content/abstract.tex}
+\clearpage
+\begin{spacing}{1.5}
+  {
+    \hypersetup{
+        linkbordercolor=black,
+        linkcolor=black,
+    }
+    \addcontentsline{toc}{chapter}{目录}
+    \tableofcontents
+  }
+\end{spacing}
+
+\clearpage
+\mainstyle
+\input{content/format.tex}
+\input{content/environment.tex}
+\input{content/course.tex}
+\input{content/conclusion.tex}
+\input{content/appendix.tex}
+
+
+\addcontentsline{toc}{chapter}{参考文献}
+\printbibliography[title={参考文献}]
+
+\input{content/acknowledgement.tex}
+
+\end{document}
