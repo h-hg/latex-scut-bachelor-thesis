@@ -197,6 +197,10 @@
 \newcommand{\tr}{\mathrm{tr}}             % trace
 \everymath{\displaystyle}               % block style for inline math
 
+% chemical
+\RequirePackage{mhchem}
+\RequirePackage{{chemfig}
+
 % unit
 \RequirePackage{siunitx}
 
