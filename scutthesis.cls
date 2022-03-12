@@ -199,7 +199,7 @@
 
 % chemical
 \RequirePackage{mhchem}
-\RequirePackage{{chemfig}
+\RequirePackage{chemfig}
 
 % unit
 \RequirePackage{siunitx}
@@ -220,7 +220,7 @@
 %% upcite is already defined, \parencite = \cite in plain style
 
 % auto reference
-\usepackage[
+\RequirePackage[
     colorlinks=true,
 ]{hyperref}
 \newcommand{\algorithmautorefname}{算法}
