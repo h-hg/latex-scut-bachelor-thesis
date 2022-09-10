@@ -124,10 +124,14 @@
 % line spacing
 \RequirePackage{setspace}
 %% 1.5 line height for main body
-\onehalfspacing
+%% TODO: no effect
+%%\onehalfspacing
 
 % float
 \RequirePackage{float}
+
+% columns
+\RequirePackage{multicol}
 
 % color
 \RequirePackage[table,xcdraw]{xcolor}
@@ -170,6 +174,8 @@
 %% display
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
+%% term TODO
+%%\RequirePackage{nomencl}
 %% theorem
 \RequirePackage{amsthm}
 \theoremstyle{plain}
@@ -213,11 +219,19 @@
 ]{caption}
 
 % reference
-\RequirePackage{biblatex}
+%% method 1
+%%% \RequirePackage{biblatex}
+%%% \addbibresource{ref.bib}
+%%% \newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
+%%% superscript format surrounded by []= \upcite
+%%% normal format surround with [] = \cite
+%% method 2
+\RequirePackage[style=gb7714-2015]{biblatex}
 \addbibresource{ref.bib}
-\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
-%% in RequirePackage[style=gb7714-2015]{biblatex}
-%% upcite is already defined, \parencite = \cite in plain style
+%%% superscript format surrounded by []= \cite or \upcite
+%%% normal format surrounded  [] = \parencite
+%%% superscript format = \supercite
+
 
 % auto reference
 \RequirePackage[
