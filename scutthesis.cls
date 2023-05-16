@@ -48,7 +48,10 @@
         number={\chinese{chapter}},
         format={\heiti \zihao{-2} \centering},
         beforeskip={0.5ex},
-        afterskip={0.5ex},
+        % afterskip={0.5ex},
+        % 标题上下间距过大，https://github.com/CTeX-org/ctex-kit/issues/207
+        fixskip=true,
+        afterskip={5ex},
     },
     section={
         aftername={\quad},
@@ -112,6 +115,12 @@
     \addcontentsline{toc}{chapter}{#1}
 }
 
+% 用于在结论中增加小节标题，需要手动编号
+\newcommand{\sectionx}[1]{
+    \section*{#1}
+    \addcontentsline{toc}{section}{#1}
+}
+
 % English font for main body
 \RequirePackage{times}
 \setmainfont{Times New Roman}
@@ -126,6 +135,8 @@
 %% 1.5 line height for main body
 %% TODO: no effect
 %%\onehalfspacing
+% 改为double比较符合间距要求
+\doublespacing
 
 % float
 \RequirePackage{float}
@@ -154,6 +165,9 @@
 \renewcommand\tablename{表}
 %\numberwithin{figure}{table}
 \renewcommand{\thetable}{\arabic{chapter}-\arabic{table}}
+% 增加单元格内换行和单独控制每一列单元格宽度宏包
+\RequirePackage{makecell}
+\RequirePackage{booktabs}
 
 % pseudocode
 \RequirePackage{algorithm}
@@ -242,6 +256,8 @@
 \renewcommand{\figureautorefname}{图}
 \newcommand{\subfigureautorefname}{图}
 \renewcommand{\equationautorefname}{式}
+% 增加章节引用中文
+\renewcommand{\sectionautorefname}{章节}
 %\def\footnoteautorefname{脚注}
 %\def\itemautorefname{项}%
 %\def\tableautorefname{表}%
@@ -266,7 +282,7 @@
         \begin{center}
             \zihao{0}
             \heiti
-            本科毕业论文
+            本科毕业设计(论文)
         \end{center}
         \begin{center}
             \zihao{1}
@@ -293,6 +309,28 @@
             \end{center}
         \end{spacing}
     \end{titlepage}
+}
+
+%增加原创性声明
+\newcommand{\makestatement}{
+    \begin{titlepage}
+    \begin{center}
+    \zihao{2}
+    \heiti
+    华南理工大学 \\
+    学位论文原创性声明 \\
+    \end{center}
+    \begin{flushleft}
+        \songti
+        \zihao{4}
+        \begin{spacing}{2}
+            \quad \quad 本人郑重声明：所呈交的论文是本人在导师的指导下独立进行研究所取得的研究成果。除了文中特别加以标注引用的内容外，本论文不包含任何其他个人或集体已经发表或撰写的成果作品。对本文的研究做出重要贡献的个人和集体，均已在文中以明确方式标明。本人完全意识到本声明的法律后果由本人承担。\\
+            \quad \quad 作者签名：\quad \quad \quad \quad \quad \quad \quad \quad \quad \quad 日期：\quad \quad 年 \quad \quad 月\quad \quad 日
+        \end{spacing}
+        \end{flushleft}
+    \end{titlepage}
+        
+    
 }
 
 % abstract
